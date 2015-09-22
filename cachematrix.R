@@ -1,7 +1,30 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Create functions that cache the inverse of a matrix.
+## In R, solve () handle only "square" matrix so matrix will 
+## be in square matrix format. 
 
-## Write a short comment describing this function
+## create argument in makeCacheMatrix function with   
+## the help of matrix() format. 
+
+## Function Example
+
+## create matrix when calling makeCacheMatrix function
+
+## a <- makeCacheMatrix (matrix(2,3,2,4),nrow=2,ncol=2)
+
+## cachesolve (a) #cachesolve solves inverse of matrix
+
+##        [,1]  [,2]
+## [1,]  2.0   -1
+## [2,] -1.5    1
+
+## We verify the answer manually using solve() function
+## solve(matrix(c(2,3,2,4),2,2))
+
+## makeCacheMatrix function store list of functions too: 
+## set: assign the value of the your new matrix
+## get: display the value of the matrix
+## set_InvMatrix: set the value of the inverse matrix
+## get_Invmatrix: get the value of the inverse matrix
 
 makeCacheMatrix <- function(x = matrix()) {
         m <- NULL
@@ -20,13 +43,15 @@ makeCacheMatrix <- function(x = matrix()) {
              get_InvMatrix =  get_InvMatrix)
 }
 
-## Write a short comment describing this function
+##  Calculate the inverse of the special "matrix" created
+##  with the abovefunction and should retrieve the
+##  inverse from the cache if already available.
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
         m <- x$get_InvMatrix()
         if(!is.null(m)) {
-                message("getting matrix from cache")
+                message("getting cache matrix")
                 return(m)
         }
         data <- x$get()
